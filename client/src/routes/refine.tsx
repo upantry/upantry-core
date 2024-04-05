@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
@@ -38,12 +38,15 @@ export async function action(args: any) {
 }
 
 export function RefinePage() {
+    const navigation = useNavigation();
+    const loading = navigation.state !== 'idle';
+
     return <>
         <h1>Provide more instructions</h1>
 
         <Form method="post">
             <input type="text" name="instruction" />
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={loading}>{!loading ? 'Submit' : 'Loading...'}</button>
         </Form>
     </>
 }

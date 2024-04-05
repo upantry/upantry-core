@@ -1,4 +1,4 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
 
@@ -21,9 +21,12 @@ export async function action(args: any) {
 }
 
 export function Home() {
+    const navigation = useNavigation();
+    const loading = navigation.state !== 'idle';
+
     return <>
         <Form method="post">
-            <button type="submit">Get Started</button>
+            <button type="submit" disabled={loading}>{!loading ? 'Get Started' : 'Loading...'}</button>
         </Form>
     </>
 }
