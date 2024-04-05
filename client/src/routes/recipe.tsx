@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
@@ -17,9 +17,7 @@ export async function loader() {
     return { getRecipeResponse };
 }
 
-export async function action(args: any) {
-    const formData = await args.request.formData();
-
+export async function action() {
     const store = useStore();
     store.freeFromInstructions = [];
 
