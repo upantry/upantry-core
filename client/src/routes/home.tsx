@@ -1,6 +1,7 @@
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useNavigation, useSubmit } from "react-router-dom";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
+import { Camera } from "../camera";
 
 export async function action(args: any) {
     const formData = await args.request.formData();
@@ -22,9 +23,12 @@ export async function action(args: any) {
 
 export function Home() {
     const navigation = useNavigation();
+
     const loading = navigation.state !== 'idle';
 
     return <>
+        <Camera onPictureTaken={(pic) => console.log(pic)} />
+
         <Form method="post">
             <button type="submit" disabled={loading}>{!loading ? 'Get Started' : 'Loading...'}</button>
         </Form>
