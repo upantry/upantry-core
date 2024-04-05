@@ -1,28 +1,29 @@
-import { useNavigate } from "react-router-dom";
-import { PictureAnalysisParams } from "./picture-analysis";
+import { Form, redirect } from "react-router-dom";
+import { useStore } from "../store";
 import { useApi } from "../http-api";
 
-export function Home() {
-    const navigate = useNavigate();
+export async function action(args: any) {
+    const formData = await args.request.formData();
+
+    const store = useStore();
+    store.pantryPicture = 'TODOPIC';
+    store.freeFromInstructions = [];
+
     const api = useApi();
+    const response = await api.getRecipe({
+        picture: store.pantryPicture,
+        freeFormInstructions: store.freeFromInstructions,
+    });
 
-    const onGetStartedClicked = async () => {
-        // TODO get the picture
-        // TODO load...
+    store.getRecipeResponse = response;
 
-        const response = await api.getRecipe({
-            picture: 'foobar',
-            freeFormInstructions: [],
-        })
-        const state: PictureAnalysisParams = {
-            analysis: response.pictureAnalysis,
-            recipe: response.recipe,
-        };
+    return redirect(`/picture-analysis`);
+}
 
-        navigate('/picture-analysis', { state });
-    };
-
+export function Home() {
     return <>
-        <button onClick={onGetStartedClicked}>Get Started</button>
+        <Form method="post">
+            <button type="submit">Get Started</button>
+        </Form>
     </>
 }

@@ -19,9 +19,12 @@ export async function loader() {
 
 export async function action(args: any) {
     const formData = await args.request.formData();
-
     const store = useStore();
-    store.freeFromInstructions = [];
+
+    const instruction = formData.get('instruction');
+    if (instruction) {
+        store.freeFromInstructions.push(instruction);
+    }
 
     const api = useApi();
     const response = await api.getRecipe({
@@ -31,30 +34,16 @@ export async function action(args: any) {
 
     store.getRecipeResponse = response;
 
-    return redirect(`/picture-analysis`);
+    return redirect(`/recipe`);
 }
 
-export function RecipePage() {
-    const navigate = useNavigate();
-    const { getRecipeResponse } = useLoaderData() as LoaderResult;
-
-    const onStartOverClicked = () => {
-        navigate('/');
-    };
-
-    const onTryAgainClicked = () => {
-        navigate('/refine');
-    };
-
-    const onTakePictureClicked = () => {
-        // TODO
-    };
-    
+export function RefinePage() {
     return <>
-        <h1>{getRecipeResponse.recipe.title}</h1>
-        <p>{getRecipeResponse.recipe.description}</p>
-        <button onClick={onStartOverClicked}>Start over</button>
-        <button onClick={onTryAgainClicked}>Try something else</button>
-        <button onClick={onTakePictureClicked}>Take a picture</button>
+        <h1>Provide more instructions</h1>
+
+        <Form method="post">
+            <input type="text" name="instruction" />
+            <button type="submit">Submit</button>
+        </Form>
     </>
 }
