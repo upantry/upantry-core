@@ -1,14 +1,13 @@
 export interface Recipe {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 export interface SavedRecipe {
-    recipe: Recipe
-    picture: string
+  recipe: Recipe;
+  picture: string;
 }
 
 export interface PictureAnalysis {
-    items: string[];
+  items: string[];
 }
-

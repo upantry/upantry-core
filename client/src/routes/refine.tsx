@@ -4,49 +4,53 @@ import { useStore } from "../store";
 import { useApi } from "../http-api";
 
 export interface LoaderResult {
-    readonly getRecipeResponse: GetRecipeResponse;
+  readonly getRecipeResponse: GetRecipeResponse;
 }
 
 export async function loader() {
-    const store = useStore();
-    const { getRecipeResponse, pantryPicture } = store;
-    if (!getRecipeResponse || !pantryPicture) {
-        return redirect("/");
-    }
+  const store = useStore();
+  const { getRecipeResponse, pantryPicture } = store;
+  if (!getRecipeResponse || !pantryPicture) {
+    return redirect("/");
+  }
 
-    return { getRecipeResponse };
+  return { getRecipeResponse };
 }
 
 export async function action(args: any) {
-    const formData = await args.request.formData();
-    const store = useStore();
+  const formData = await args.request.formData();
+  const store = useStore();
 
-    const instruction = formData.get('instruction');
-    if (instruction) {
-        store.freeFromInstructions.push(instruction);
-    }
+  const instruction = formData.get("instruction");
+  if (instruction) {
+    store.freeFromInstructions.push(instruction);
+  }
 
-    const api = useApi();
-    const response = await api.getRecipe({
-        picture: store.pantryPicture!,
-        freeFormInstructions: store.freeFromInstructions,
-    });
+  const api = useApi();
+  const response = await api.getRecipe({
+    picture: store.pantryPicture!,
+    freeFormInstructions: store.freeFromInstructions,
+  });
 
-    store.getRecipeResponse = response;
+  store.getRecipeResponse = response;
 
-    return redirect(`/recipe`);
+  return redirect(`/recipe`);
 }
 
 export function RefinePage() {
-    const navigation = useNavigation();
-    const loading = navigation.state !== 'idle';
+  const navigation = useNavigation();
+  const loading = navigation.state !== "idle";
 
-    return <>
-        <h1>Provide more instructions</h1>
+  return (
+    <>
+      <h1>Provide more instructions</h1>
 
-        <Form method="post">
-            <input type="text" name="instruction" />
-            <button type="submit" disabled={loading}>{!loading ? 'Submit' : 'Loading...'}</button>
-        </Form>
+      <Form method="post">
+        <input type="text" name="instruction" />
+        <button type="submit" disabled={loading}>
+          {!loading ? "Submit" : "Loading..."}
+        </button>
+      </Form>
     </>
+  );
 }

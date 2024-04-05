@@ -4,7 +4,7 @@ export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
 
-  let message = 'Unknown error';
+  let message = "Unknown error";
   if (isRouteErrorResponse(error)) {
     message = error.statusText;
   }
