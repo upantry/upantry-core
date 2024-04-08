@@ -1,4 +1,10 @@
-import { Form, redirect, useNavigate, useNavigation, useSubmit } from "react-router-dom";
+import {
+  Form,
+  redirect,
+  useNavigate,
+  useNavigation,
+  useSubmit,
+} from "react-router-dom";
 import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
@@ -54,22 +60,37 @@ export function RefinePage() {
         <h1>Provide more instructions</h1>
 
         <Form method="post" ref={formRef}>
-          <p>Sorry this recipe didn't work out for you. If you provide more instructions, we can find a better one:</p>
+          <p>
+            Sorry this recipe didn't work out for you. If you provide more
+            instructions, we can find a better one:
+          </p>
           <FormGroup>
-            <input className="form-control" type="text" name="instruction" placeholder="Make dinner, give me a cake, something hot..." />
+            <input
+              className="form-control"
+              type="text"
+              name="instruction"
+              placeholder="Make dinner, give me a cake, something hot..."
+            />
           </FormGroup>
-          <FormGroup>
-          </FormGroup>
+          <FormGroup></FormGroup>
         </Form>
       </Content>
 
       <ActionBar>
         <div className="d-grid mx-2 my-2 gap-2">
-          <Button variant="primary" disabled={loading} onClick={() => handleSubmit(formRef.current)}>
+          <Button
+            variant="primary"
+            disabled={loading}
+            onClick={() => handleSubmit(formRef.current)}
+          >
             {!loading ? "Submit" : "Loading..."}
           </Button>
 
-          <Button variant="secondary" disabled={loading} onClick={() => navigate('/recipe')}>
+          <Button
+            variant="secondary"
+            disabled={loading}
+            onClick={() => navigate("/recipe")}
+          >
             Cancel
           </Button>
         </div>

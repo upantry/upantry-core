@@ -1,17 +1,19 @@
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { ActionBar, Content, Page } from "../layout";
 
 function CarouselSlide() {
-  return <div style={{
-    minHeight: '400px',
-    height: '100%',
-    background: 'black',
-  }}>
-
-  </div>
+  return (
+    <div
+      style={{
+        minHeight: "400px",
+        height: "100%",
+        background: "black",
+      }}
+    ></div>
+  );
 }
 
 export function Home() {
@@ -51,7 +53,9 @@ export function Home() {
 
       <ActionBar>
         <div className="d-grid mx-2 my-2" style={{ flex: 0 }}>
-          <Button variant="primary" onClick={onGetStartedClicked}>Get Started</Button>
+          <Button variant="primary" onClick={onGetStartedClicked}>
+            Get Started
+          </Button>
         </div>
       </ActionBar>
     </Page>

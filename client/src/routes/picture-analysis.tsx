@@ -48,8 +48,12 @@ export function PictureAnalysisPage() {
 
       <ActionBar>
         <div className="d-grid mx-2 my-2 gap-2">
-          <Button variant="primary" onClick={onConfirmClicked}>That looks right</Button>
-          <Button variant="secondary" onClick={onCancelClicked}>That's not it</Button>
+          <Button variant="primary" onClick={onConfirmClicked}>
+            That looks right
+          </Button>
+          <Button variant="secondary" onClick={onCancelClicked}>
+            That's not it
+          </Button>
         </div>
       </ActionBar>
     </Page>

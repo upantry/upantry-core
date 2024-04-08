@@ -37,14 +37,25 @@ export function Camera(props: { onPictureTaken: (picture: string) => void }) {
   }
 
   return (
-    <div style={{position: 'relative', height: '100%'}}>
-      <video ref={videoRef} autoPlay={true} width={400} height={400} style={{
-        width: '100%',
-        height: '100%',
-      }} />
+    <div style={{ position: "relative", height: "100%" }}>
+      <video
+        ref={videoRef}
+        autoPlay={true}
+        width={400}
+        height={400}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
 
-      <div className="d-grid mx-2 my-2" style={{position: 'absolute', bottom: 0, left: 0, right: 0}}>
-        <Button variant="primary" onClick={takeSnapshot}>Take Picture</Button>
+      <div
+        className="d-grid mx-2 my-2"
+        style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
+      >
+        <Button variant="primary" onClick={takeSnapshot}>
+          Take Picture
+        </Button>
       </div>
     </div>
   );

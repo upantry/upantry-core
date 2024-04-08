@@ -47,7 +47,7 @@ export function RecipePage() {
   };
 
   const onTakePictureClicked = () => {
-    alert('TODO');
+    alert("TODO");
   };
 
   return (
@@ -59,9 +59,15 @@ export function RecipePage() {
 
       <ActionBar>
         <div className="d-grid mx-2 my-2 gap-2">
-          <Button variant="primary" onClick={onTakePictureClicked}>Take a picture</Button>
-          <Button variant="secondary" onClick={onTryAgainClicked}>Try something else</Button>
-          <Button variant="secondary" onClick={onStartOverClicked}>Start over</Button>
+          <Button variant="primary" onClick={onTakePictureClicked}>
+            Take a picture
+          </Button>
+          <Button variant="secondary" onClick={onTryAgainClicked}>
+            Try something else
+          </Button>
+          <Button variant="secondary" onClick={onStartOverClicked}>
+            Start over
+          </Button>
         </div>
       </ActionBar>
     </Page>

@@ -27,7 +27,7 @@ export async function action(args: any) {
 export function IngredientsPicturePage() {
   const handleSubmit = useSubmit();
 
-  const [picture, setPicture] = useState<string>('');
+  const [picture, setPicture] = useState<string>("");
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -35,7 +35,7 @@ export function IngredientsPicturePage() {
     <Page>
       <Content>
         {/* <h1>Take a picture of your ingredients ({navigation.state})</h1> */}
-        <Form method="post" ref={formRef} style={{height: '100%'}}>
+        <Form method="post" ref={formRef} style={{ height: "100%" }}>
           <Camera
             onPictureTaken={(pic) => {
               setPicture(pic);
