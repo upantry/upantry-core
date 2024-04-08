@@ -3,7 +3,7 @@ import { Form, redirect, useNavigation, useSubmit } from "react-router-dom";
 import { useApi } from "../http-api";
 import { useStore } from "../store";
 import { Camera } from "../camera";
-import { ActionBar, Content, Page } from "../layout";
+import { Content, NavBar, Page } from "../layout";
 import Button from "react-bootstrap/Button";
 
 export async function action(args: any) {
@@ -26,7 +26,6 @@ export async function action(args: any) {
 
 export function IngredientsPicturePage() {
   const handleSubmit = useSubmit();
-  const navigation = useNavigation();
 
   const [picture, setPicture] = useState<string>('');
 
