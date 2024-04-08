@@ -37,7 +37,7 @@ export function Camera(props: { onPictureTaken: (picture: string) => void }) {
   }
 
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{position: 'relative', height: '100%'}}>
       <video ref={videoRef} autoPlay={true} width={400} height={400} style={{
         width: '100%',
         height: '100%',

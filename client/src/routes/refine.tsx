@@ -1,9 +1,11 @@
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useNavigate, useNavigation, useSubmit } from "react-router-dom";
 import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
 import Button from "react-bootstrap/Button";
 import { FormGroup } from "react-bootstrap";
+import { ActionBar, Content, Page } from "../layout";
+import { useRef } from "react";
 
 export interface LoaderResult {
   readonly getRecipeResponse: GetRecipeResponse;
@@ -40,24 +42,38 @@ export async function action(args: any) {
 }
 
 export function RefinePage() {
+  const navigate = useNavigate();
   const navigation = useNavigation();
+  const handleSubmit = useSubmit();
   const loading = navigation.state !== "idle";
+  const formRef = useRef(null);
 
   return (
-    <>
-      <h1>Provide more instructions</h1>
+    <Page>
+      <Content>
+        <h1>Provide more instructions</h1>
 
-      <Form method="post">
-        <p>Sorry this recipe didn't work out for you. If you provide more instructions, we can find a better one:</p>
-        <FormGroup>
-          <input className="form-control" type="text" name="instruction" placeholder="Make dinner, give me a cake, something hot..." />
-        </FormGroup>
-        <FormGroup>
-          <Button variant="primary" type="submit" disabled={loading}>
+        <Form method="post" ref={formRef}>
+          <p>Sorry this recipe didn't work out for you. If you provide more instructions, we can find a better one:</p>
+          <FormGroup>
+            <input className="form-control" type="text" name="instruction" placeholder="Make dinner, give me a cake, something hot..." />
+          </FormGroup>
+          <FormGroup>
+          </FormGroup>
+        </Form>
+      </Content>
+
+      <ActionBar>
+        <div className="d-grid mx-2 my-2 gap-2">
+          <Button variant="primary" disabled={loading} onClick={() => handleSubmit(formRef.current)}>
             {!loading ? "Submit" : "Loading..."}
           </Button>
-        </FormGroup>
-      </Form>
-    </>
+
+          <Button variant="secondary" disabled={loading} onClick={() => navigate('/recipe')}>
+            Cancel
+          </Button>
+        </div>
+      </ActionBar>
+    </Page>
   );
 }

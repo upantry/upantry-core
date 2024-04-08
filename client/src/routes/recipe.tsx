@@ -3,6 +3,7 @@ import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
 import Button from "react-bootstrap/Button";
+import { ActionBar, Content, Page } from "../layout";
 
 export interface LoaderResult {
   readonly getRecipeResponse: GetRecipeResponse;
@@ -46,19 +47,23 @@ export function RecipePage() {
   };
 
   const onTakePictureClicked = () => {
-    // TODO
+    alert('TODO');
   };
 
   return (
-    <>
-      <h1>{getRecipeResponse.recipe.title}</h1>
-      <p>{getRecipeResponse.recipe.description}</p>
+    <Page>
+      <Content>
+        <h1>{getRecipeResponse.recipe.title}</h1>
+        <p>{getRecipeResponse.recipe.description}</p>
+      </Content>
 
-      <div className="d-grid mx-2 my-2 gap-2">
-            <Button variant="primary" onClick={onStartOverClicked}>Start over</Button>
-            <Button variant="primary" onClick={onTakePictureClicked}>Take a picture</Button>
-            <Button variant="secondary" onClick={onTryAgainClicked}>Try something else</Button>
-      </div>
-    </>
+      <ActionBar>
+        <div className="d-grid mx-2 my-2 gap-2">
+          <Button variant="primary" onClick={onTakePictureClicked}>Take a picture</Button>
+          <Button variant="secondary" onClick={onTryAgainClicked}>Try something else</Button>
+          <Button variant="secondary" onClick={onStartOverClicked}>Start over</Button>
+        </div>
+      </ActionBar>
+    </Page>
   );
 }

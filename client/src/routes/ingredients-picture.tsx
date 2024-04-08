@@ -3,6 +3,8 @@ import { Form, redirect, useNavigation, useSubmit } from "react-router-dom";
 import { useApi } from "../http-api";
 import { useStore } from "../store";
 import { Camera } from "../camera";
+import { ActionBar, Content, Page } from "../layout";
+import Button from "react-bootstrap/Button";
 
 export async function action(args: any) {
   const formData = await args.request.formData();
@@ -31,17 +33,19 @@ export function IngredientsPicturePage() {
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
-    <>
-      {/* <h1>Take a picture of your ingredients ({navigation.state})</h1> */}
-      <Form method="post" ref={formRef}>
-        <Camera
-          onPictureTaken={(pic) => {
-            setPicture(pic);
-            setTimeout(() => handleSubmit(formRef.current), 0);
-          }}
-        />
-        <input type="hidden" name="picture" value={picture} />
-      </Form>
-    </>
+    <Page>
+      <Content>
+        {/* <h1>Take a picture of your ingredients ({navigation.state})</h1> */}
+        <Form method="post" ref={formRef} style={{height: '100%'}}>
+          <Camera
+            onPictureTaken={(pic) => {
+              setPicture(pic);
+              setTimeout(() => handleSubmit(formRef.current), 0);
+            }}
+          />
+          <input type="hidden" name="picture" value={picture} />
+        </Form>
+      </Content>
+    </Page>
   );
 }

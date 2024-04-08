@@ -19,3 +19,31 @@ html, body, #root {
 video {
   object-fit: cover;
 }
+
+#screen-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#screen-layout .nav-bar {
+  flex: 0 0 60px;
+}
+
+#screen-layout * {
+  flex: 1 0 auto;
+}
+
+#screen-layout>.page {
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-layout>.page>.content {
+  flex: 1 0 auto;
+  padding: 12px;
+}
+
+#screen-layout>.page>.action-bar {
+  flex: 0 0 auto;
+}
