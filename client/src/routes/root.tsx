@@ -1,11 +1,21 @@
 import { Outlet } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 
 export function Root() {
   return (
     <>
-      <h1>uPantry</h1>
+      <Navbar>
+        <Container>
+          <Navbar.Brand href="/">
+            uPantry
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
 
-      <Outlet />
+      <div id="content">
+        <Outlet />
+      </div>
     </>
   );
 }

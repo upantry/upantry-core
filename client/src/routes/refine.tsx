@@ -2,6 +2,8 @@ import { Form, redirect, useNavigation } from "react-router-dom";
 import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
 import { useApi } from "../http-api";
+import Button from "react-bootstrap/Button";
+import { FormGroup } from "react-bootstrap";
 
 export interface LoaderResult {
   readonly getRecipeResponse: GetRecipeResponse;
@@ -46,10 +48,15 @@ export function RefinePage() {
       <h1>Provide more instructions</h1>
 
       <Form method="post">
-        <input type="text" name="instruction" />
-        <button type="submit" disabled={loading}>
-          {!loading ? "Submit" : "Loading..."}
-        </button>
+        <p>Sorry this recipe didn't work out for you. If you provide more instructions, we can find a better one:</p>
+        <FormGroup>
+          <input className="form-control" type="text" name="instruction" placeholder="Make dinner, give me a cake, something hot..." />
+        </FormGroup>
+        <FormGroup>
+          <Button variant="primary" type="submit" disabled={loading}>
+            {!loading ? "Submit" : "Loading..."}
+          </Button>
+        </FormGroup>
       </Form>
     </>
   );

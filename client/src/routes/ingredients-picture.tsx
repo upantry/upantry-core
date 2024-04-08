@@ -6,7 +6,6 @@ import { Camera } from "../camera";
 
 export async function action(args: any) {
   const formData = await args.request.formData();
-  console.log(Object.fromEntries(formData));
 
   const store = useStore();
   store.pantryPicture = formData.get("picture");
@@ -27,19 +26,18 @@ export function IngredientsPicturePage() {
   const handleSubmit = useSubmit();
   const navigation = useNavigation();
 
-  const [picture, setPicture] = useState<string>();
+  const [picture, setPicture] = useState<string>('');
 
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <>
-      <h1>Take a picture of your ingredients</h1>
+      {/* <h1>Take a picture of your ingredients ({navigation.state})</h1> */}
       <Form method="post" ref={formRef}>
-        {navigation.state}
         <Camera
           onPictureTaken={(pic) => {
             setPicture(pic);
-            handleSubmit(null);
+            setTimeout(() => handleSubmit(formRef.current), 0);
           }}
         />
         <input type="hidden" name="picture" value={picture} />

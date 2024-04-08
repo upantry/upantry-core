@@ -1,6 +1,7 @@
 import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
+import Button from "react-bootstrap/Button";
 
 export interface LoaderResult {
   readonly getRecipeResponse: GetRecipeResponse;
@@ -26,7 +27,7 @@ export function PictureAnalysisPage() {
   const onCancelClicked = () => {
     store.getRecipeResponse = null;
     store.pantryPicture = null;
-    navigate("/");
+    navigate("/ingredients-picture");
   };
 
   const onConfirmClicked = () => {
@@ -41,8 +42,11 @@ export function PictureAnalysisPage() {
           return <li key={item}>{item}</li>;
         })}
       </ul>
-      <button onClick={onConfirmClicked}>That looks right</button>
-      <button onClick={onCancelClicked}>That's not it</button>
+
+    <div className="d-grid mx-2 my-2 gap-2">
+      <Button variant="primary" onClick={onConfirmClicked}>That looks right</Button>
+      <Button variant="secondary" onClick={onCancelClicked}>That's not it</Button>
+    </div>
     </>
   );
 }
