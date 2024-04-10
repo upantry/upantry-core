@@ -49,6 +49,8 @@ export function Home() {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+
+        <h2>Recently enjoyed plates</h2>
       </Content>
 
       <ActionBar>

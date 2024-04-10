@@ -1,0 +1,91 @@
+$primary: rgba(3, 84, 7, 0.45);
+$title: rgba(200, 121, 121, 1);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+.btn {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+  font-weight: 900;
+}
+
+#root .btn-primary {
+    @include button-variant($primary, darken($primary, 7.5%));
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  font-family: 'Source Sans 3';
+}
+
+#root {
+  background-color: rgba(245, 243, 233, 0.5);
+}
+
+#root h1, #root h2 {
+  margin-top: 12px;
+  color: $title;
+  font-weight: 900;
+}
+
+#content {
+  min-height: 80%;
+  padding: 12px;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+}
+
+video {
+  object-fit: cover;
+}
+
+#screen-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+}
+
+#screen-layout .nav-bar {
+  flex: 0 0 60px;
+  background-color: $primary;
+}
+
+#screen-layout .navbar-brand {
+  color: $white;
+  text-align: center;
+  font-weight: 700;
+}
+
+#screen-layout .navbar-brand img {
+  width: 40px;
+  margin-right: 4px;
+}
+
+#screen-layout * {
+  flex: 1 0 auto;
+}
+
+#screen-layout > .page {
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-layout > .page > .content {
+  flex: 1 0 auto;
+  padding: 12px;
+}
+
+#screen-layout > .page > .action-bar {
+  flex: 0 0 auto;
+}

@@ -9,7 +9,10 @@ export function Root() {
       <NavBar>
         <Navbar>
           <Container>
-            <Navbar.Brand href="/">uPantry</Navbar.Brand>
+            <Navbar.Brand href="/">
+              <img src="/logo.png" />
+              Pantry
+            </Navbar.Brand>
           </Container>
         </Navbar>
       </NavBar>
