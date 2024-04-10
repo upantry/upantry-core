@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
 	kotlin("plugin.jpa") version "1.9.23"
+	kotlin("plugin.allopen") version "1.9.22"
 }
 
 group = "com.upantry7"
@@ -28,7 +29,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.springframework.ai:spring-ai-vertex-ai-gemini-spring-boot-starter")
+//	implementation("org.springframework.ai:spring-ai-vertex-ai-gemini-spring-boot-starter")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
