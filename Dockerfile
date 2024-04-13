@@ -10,7 +10,7 @@ RUN ./gradlew clean build --no-daemon
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM amazoncorretto:17
 EXPOSE 8080 9010
-RUN mkdir /app
+RUN mkdir /home/app
 # Copy the jar to the production image from the builder stage.
 COPY --from=builder /home/gradle/src/build/libs/upantry-core-0.0.1-SNAPSHOT.jar /home/app/upantry-be.jar
 COPY --from=builder /home/gradle/src/build/resources /home/app/resources
