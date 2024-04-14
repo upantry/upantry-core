@@ -17,4 +17,4 @@ COPY --from=builder /home/gradle/src/build/libs /app/libs
 RUN echo $(ls -1 /app/libs)
 
 # Run the web service on container startup.
-ENTRYPOINT [ "java”, “-jar”, “/app/libs/upantry-core.jar" ]
+ENTRYPOINT [ "java", "-jar", "/app/libs/upantry-core.jar" ]
