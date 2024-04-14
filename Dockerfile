@@ -10,11 +10,10 @@ RUN ./gradlew clean build --no-daemon
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM amazoncorretto:17
 EXPOSE 8080
-RUN mkdir /home/app
+RUN mkdir /app
 # Copy the jar to the production image from the builder stage.
-COPY --from=builder /home/gradle/src/build/libs/upantry-core-0.0.1-SNAPSHOT.jar /home/app/upantry-be.jar
-COPY --from=builder /home/gradle/src/build/resources /home/app/resources
-COPY --from=builder /home/gradle/src/build/libs/ /home/app/libs
+COPY --from=builder /home/gradle/src/build/resources /app/resources
+COPY --from=builder /home/gradle/src/build/libs /app/libs
 
 # Run the web service on container startup.
-ENTRYPOINT [ "java”, “-jar”, “/home/app/upantry-be.jar" ]
+ENTRYPOINT [ "java”, “-jar”, “/app/lib/upantry-core.jar" ]
