@@ -2,12 +2,9 @@ FROM node:18-bookworm
 
 WORKDIR /app
 
-COPY package.json .
-
-RUN npm install
-
 COPY . .
+RUN npm install
+RUN npm run build
 
-EXPOSE 3000
-
-CMD ["npm", "start"]
+FROM nginx
+COPY dist/ /usr/share/nginx/html
