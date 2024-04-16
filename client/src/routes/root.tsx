@@ -10,8 +10,8 @@ export function Root() {
         <Navbar>
           <Container>
             <Navbar.Brand href="/">
-              <img src="/logo.png" />
-              Pantry
+              {/* <img src="/logo.png" /> */}
+              <span style={{opacity: 0.5}}>u</span>Pantry
             </Navbar.Brand>
           </Container>
         </Navbar>

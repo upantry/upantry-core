@@ -1,5 +1,5 @@
-$primary: rgba(3, 84, 7, 0.45);
-$title: rgba(200, 121, 121, 1);
+$primary: rgba(0, 128, 128, 1);
+$title: rgba(235, 91, 117, 1);
 
 @import "node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
@@ -19,6 +19,7 @@ html,
 body,
 #root {
   height: 100%;
+  background-color: rgba(245, 243, 233, 0.5);
 }
 
 #root {
@@ -93,4 +94,8 @@ video {
 
 #screen-layout > .page > .content a {
   color: $primary;
+}
+
+.ticker-view {
+  color: black;
 }
