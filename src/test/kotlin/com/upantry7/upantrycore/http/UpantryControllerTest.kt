@@ -28,7 +28,7 @@ class UpantryControllerTest(@Autowired val restTemplate: TestRestTemplate) {
     fun `Test sample ingredients`() {
         val entity = restTemplate.postForEntity<TranscribeIngredientsResponse>(
             "/transcribeIngredients",
-            request = TranscribeIngredientsRequest(ByteArray(10))
+            request = TranscribeIngredientsRequest("")
         )
         assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(entity.body).isEqualTo(TranscribeIngredientsResponse(UpantryController.sampleIngredients))
