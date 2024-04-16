@@ -3,7 +3,6 @@ import { useStore } from "../store";
 import { Content, Page } from "../layout";
 import Markdown from "react-markdown";
 import { useApi } from "../http-api";
-import React from "react";
 
 export interface LoaderResult {
   readonly ingredients: string;

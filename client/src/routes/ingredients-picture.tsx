@@ -3,7 +3,6 @@ import { Form, redirect, useSubmit } from "react-router-dom";
 import { useStore } from "../store";
 import { Camera } from "../camera";
 import { Content, Page } from "../layout";
-import React from "react";
 
 export async function action(args: any) {
   const formData = await args.request.formData();

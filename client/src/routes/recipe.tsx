@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import { ActionBar, Content, Page } from "../layout";
 import Markdown from "react-markdown";
 import { useApi } from "../http-api";
-import React from "react";
 
 export interface LoaderResult {
   readonly recipe: string;

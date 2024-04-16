@@ -3,7 +3,6 @@ import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ActionBar, Content, Page } from "../layout";
-import React from "react";
 
 function CarouselSlide() {
   return (

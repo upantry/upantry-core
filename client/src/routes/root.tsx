@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { NavBar } from "../layout";
-import React from "react";
 
 export function Root() {
   return (

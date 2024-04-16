@@ -1,5 +1,3 @@
-import React from "react";
-
 export function NavBar(props: React.PropsWithChildren) {
   return <div className="nav-bar">{props.children}</div>;
 }
