@@ -17,7 +17,7 @@ export async function loader() {
   }
 
   const api = useApi();
-  const { ingredients } = await api.transcribeIngredients({ image })
+  const { ingredients } = await api.transcribeIngredients({ image });
   store.ingredients = ingredients;
   return { ingredients };
 }
@@ -30,15 +30,15 @@ export function PictureAnalysisPage() {
   return (
     <Page>
       <Content>
-        <div onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          store.choice = (e.target as HTMLElement).innerText;
-          navigate('/recipe');
-        }}>
-        <Markdown>
-          {ingredients}
-        </Markdown>
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            store.choice = (e.target as HTMLElement).innerText;
+            navigate("/recipe");
+          }}
+        >
+          <Markdown>{ingredients}</Markdown>
         </div>
       </Content>
     </Page>

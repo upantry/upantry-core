@@ -9,10 +9,7 @@ import {
   loader as pictureAnalysisLoader,
 } from "./routes/picture-analysis.tsx";
 import { Home } from "./routes/home.tsx";
-import {
-  RecipePage,
-  loader as recipeLoader,
-} from "./routes/recipe.tsx";
+import { RecipePage, loader as recipeLoader } from "./routes/recipe.tsx";
 import {
   IngredientsPicturePage,
   action as ingredientsPictureAction,

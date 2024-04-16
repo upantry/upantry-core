@@ -16,6 +16,10 @@ export interface GenerateRecipeResponse {
 }
 
 export interface Api {
-  transcribeIngredients(request: TranscribeIngredientsRequest): Promise<TranscribeIngredientsResponse>;
-  generateRecipe(request: GenerateRecipeRequest): Promise<GenerateRecipeResponse>;
+  transcribeIngredients(
+    request: TranscribeIngredientsRequest,
+  ): Promise<TranscribeIngredientsResponse>;
+  generateRecipe(
+    request: GenerateRecipeRequest,
+  ): Promise<GenerateRecipeResponse>;
 }
