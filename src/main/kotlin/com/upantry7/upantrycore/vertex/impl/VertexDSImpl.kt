@@ -57,7 +57,7 @@ class VertexDSImpl : VertexDS {
         init {
             val vertexAI = VertexAI("fluid-griffin-419114", "us-east1")
             val chatOptions = VertexAiGeminiChatOptions()
-            chatOptions.model = "gemini-1.0-pro-vision"
+            chatOptions.model = "gemini-1.5-pro-preview-0409"
             chatClient = VertexAiGeminiChatClient(
                 vertexAI,
                 chatOptions
@@ -69,7 +69,7 @@ class VertexDSImpl : VertexDS {
             "data:image/jpg;base64," to MimeTypeUtils.IMAGE_JPEG,
             "data:image/jpeg;base64," to MimeTypeUtils.IMAGE_JPEG,
         )
-        private const val INGREDIENT_PROMPT = "The image shows what the person has to cook a meal with, please describe all items in the picture and a number list of meal ideas.\n" +
-                "Use markdown headers to separate sections."
+        private const val INGREDIENT_PROMPT = "The image shows what the person has to cook a meal with, please describe all items in the picture and a number list of meal ideas. The section titles should be in header 1 markdown format\n" +
+                "Modify the output so that the meal ideas indexes are linkable. For example, '1. [Chicken and Shrimp Stir-fry with Bean Sprouts and Noodles](#idea1)'. Don't add anything else to the output."
     }
 }
