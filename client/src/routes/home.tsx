@@ -6,9 +6,7 @@ import { ActionBar, Content, Page } from "../layout";
 import { AnimatedCounter } from "react-animated-counter";
 import { useEffect, useState } from "react";
 
-function CarouselSlide(props: {
-  image: string,
-}) {
+function CarouselSlide(props: { image: string }) {
   return (
     <div
       style={{
@@ -16,7 +14,7 @@ function CarouselSlide(props: {
         height: "100%",
         background: "black",
         backgroundImage: `url(${props.image})`,
-        backgroundSize: 'cover',
+        backgroundSize: "cover",
       }}
     ></div>
   );
@@ -37,7 +35,7 @@ export function Home() {
     }, 1000);
 
     return () => clearInterval(interval);
-  })
+  });
 
   return (
     <Page>
@@ -51,28 +49,28 @@ export function Home() {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-          <CarouselSlide image="/slide2.jpg" />
+            <CarouselSlide image="/slide2.jpg" />
             <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-          <CarouselSlide image="/slide3.jpg" />
+            <CarouselSlide image="/slide3.jpg" />
             <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-          <CarouselSlide image="/slide4.jpg" />
+            <CarouselSlide image="/slide4.jpg" />
             <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      
+
         <Button variant="primary" onClick={onGetStartedClicked}>
           Get Started
         </Button>
@@ -97,8 +95,7 @@ export function Home() {
       </Content>
 
       <ActionBar>
-        <div className="d-grid mx-2 my-2" style={{ flex: 0 }}>
-        </div>
+        <div className="d-grid mx-2 my-2" style={{ flex: 0 }}></div>
       </ActionBar>
     </Page>
   );

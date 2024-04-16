@@ -11,7 +11,7 @@ export function Root() {
           <Container>
             <Navbar.Brand href="/">
               {/* <img src="/logo.png" /> */}
-              <span style={{opacity: 0.5}}>u</span>Pantry
+              <span style={{ opacity: 0.5 }}>u</span>Pantry
             </Navbar.Brand>
           </Container>
         </Navbar>
