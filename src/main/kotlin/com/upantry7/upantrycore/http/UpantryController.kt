@@ -32,7 +32,9 @@ class UpantryController(
     @PostMapping("/generateRecipe")
     @CrossOrigin
     fun generateRecipe(@RequestBody body: GenerateRecipeRequest): GenerateRecipeResponse {
-        return GenerateRecipeResponse(sampleRecipe)
+        if(body.ingredients.isEmpty()) return GenerateRecipeResponse(sampleRecipe)
+        val recipe = vertexDS.getRecipe(body.ingredients, body.choice)
+        return GenerateRecipeResponse(recipe)
     }
 
     companion object {

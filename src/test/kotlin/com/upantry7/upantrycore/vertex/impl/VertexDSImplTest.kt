@@ -24,4 +24,11 @@ class VertexDSImplTest(@Autowired val vertexDSImpl: VertexDSImpl) {
 //        val response = vertexDSImpl.getIngredientsFromImageBase64(ingredientsPngBase64)
 //        println(response)
     }
+    @Test
+    fun `Test full recipe`() {
+//        val ingredients = vertexDSImpl.getIngredientsFromImageBase64(ingredientsPngBase64)
+//        println(ingredients)
+//        val recipe = vertexDSImpl.getRecipe(ingredients, "Option 1")
+//        println(recipe)
+    }
 }
