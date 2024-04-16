@@ -1,34 +1,25 @@
-import { PictureAnalysis, Recipe, SavedRecipe } from "./Model";
-
-export interface GetRecipeRequest {
-  picture: string; // Base 64 of the picture
-  freeFormInstructions: string[]; // List of the instructions given by the user
+export interface TranscribeIngredientsRequest {
+  image: string;
 }
 
-export interface GetRecipeResponse {
-  pictureAnalysis: PictureAnalysis;
-  recipe: Recipe;
+export interface TranscribeIngredientsResponse {
+  ingredients: string;
 }
 
-export interface SaveFinalRecipeRequest {
-  picture: string;
-  recipe: Recipe;
+export interface GenerateRecipeRequest {
+  ingredients: string;
+  choice: string;
 }
 
-export interface SaveFinalRecipeResponse {}
-
-export interface GetRecipeGalleryRequest {}
-
-export interface GetRecipeGalleryResponse {
-  savedRecipes: SavedRecipe[];
+export interface GenerateRecipeResponse {
+  recipe: string;
 }
 
 export interface Api {
-  getRecipe(request: GetRecipeRequest): Promise<GetRecipeResponse>;
-  sendPicture(
-    request: SaveFinalRecipeRequest,
-  ): Promise<SaveFinalRecipeResponse>;
-  getRecipeGallery(
-    request: GetRecipeGalleryRequest,
-  ): Promise<GetRecipeGalleryResponse>;
+  transcribeIngredients(
+    request: TranscribeIngredientsRequest,
+  ): Promise<TranscribeIngredientsResponse>;
+  generateRecipe(
+    request: GenerateRecipeRequest,
+  ): Promise<GenerateRecipeResponse>;
 }

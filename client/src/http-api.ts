@@ -1,46 +1,47 @@
 import {
   Api,
-  GetRecipeGalleryRequest,
-  GetRecipeGalleryResponse,
-  GetRecipeRequest,
-  GetRecipeResponse,
-  SaveFinalRecipeRequest,
-  SaveFinalRecipeResponse,
+  GenerateRecipeRequest,
+  GenerateRecipeResponse,
+  TranscribeIngredientsRequest,
+  TranscribeIngredientsResponse,
 } from "./Api";
 
 export class HttpApi implements Api {
-  private fakeWait(): Promise<void> {
-    return new Promise((r) => setTimeout(r, 1000));
-  }
+  constructor(readonly base: string) {}
 
-  async getRecipe(request: GetRecipeRequest): Promise<GetRecipeResponse> {
-    await this.fakeWait();
-    return {
-      pictureAnalysis: {
-        items: ["beans", "oil", "chicken"],
+  async transcribeIngredients(
+    request: TranscribeIngredientsRequest,
+  ): Promise<TranscribeIngredientsResponse> {
+    const resp = await fetch(this.base + "/transcribeIngredients", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-Type": "application/json",
       },
-      recipe: {
-        title: "Bean-oil-chicken grandma recipe",
-        description: "You mix it all together",
+    });
+    if (!resp.ok) {
+      throw new Error(`Response status ${resp.status}`);
+    }
+    return await resp.json();
+  }
+
+  async generateRecipe(
+    request: GenerateRecipeRequest,
+  ): Promise<GenerateRecipeResponse> {
+    const resp = await fetch(this.base + "/generateRecipe", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-Type": "application/json",
       },
-    };
-  }
-
-  async sendPicture(
-    request: SaveFinalRecipeRequest,
-  ): Promise<SaveFinalRecipeResponse> {
-    await this.fakeWait();
-    throw new Error("Method not implemented.");
-  }
-
-  async getRecipeGallery(
-    request: GetRecipeGalleryRequest,
-  ): Promise<GetRecipeGalleryResponse> {
-    await this.fakeWait();
-    throw new Error("Method not implemented.");
+    });
+    if (!resp.ok) {
+      throw new Error(`Response status ${resp.status}`);
+    }
+    return await resp.json();
   }
 }
 
 export function useApi(): Api {
-  return new HttpApi();
+  return new HttpApi("http://localhost:8080");
 }

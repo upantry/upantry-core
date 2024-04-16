@@ -1,70 +1,44 @@
 import { redirect, useLoaderData, useNavigate } from "react-router-dom";
-import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
-import { useApi } from "../http-api";
 import Button from "react-bootstrap/Button";
 import { ActionBar, Content, Page } from "../layout";
+import Markdown from "react-markdown";
+import { useApi } from "../http-api";
 
 export interface LoaderResult {
-  readonly getRecipeResponse: GetRecipeResponse;
+  readonly recipe: string;
 }
 
 export async function loader() {
   const store = useStore();
-  const { getRecipeResponse, pantryPicture } = store;
-  if (!getRecipeResponse || !pantryPicture) {
+  const { ingredients, choice } = store;
+  if (!ingredients || !choice) {
     return redirect("/");
   }
 
-  return { getRecipeResponse };
-}
-
-export async function action() {
-  const store = useStore();
-  store.freeFromInstructions = [];
-
   const api = useApi();
-  const response = await api.getRecipe({
-    picture: store.pantryPicture!,
-    freeFormInstructions: store.freeFromInstructions,
-  });
 
-  store.getRecipeResponse = response;
+  const { recipe } = await api.generateRecipe({ ingredients, choice });
 
-  return redirect(`/picture-analysis`);
+  return { recipe };
 }
 
 export function RecipePage() {
   const navigate = useNavigate();
-  const { getRecipeResponse } = useLoaderData() as LoaderResult;
+  const { recipe } = useLoaderData() as LoaderResult;
 
   const onStartOverClicked = () => {
     navigate("/");
   };
 
-  const onTryAgainClicked = () => {
-    navigate("/refine");
-  };
-
-  const onTakePictureClicked = () => {
-    alert("TODO");
-  };
-
   return (
     <Page>
       <Content>
-        <h1>{getRecipeResponse.recipe.title}</h1>
-        <p>{getRecipeResponse.recipe.description}</p>
+        <Markdown>{recipe}</Markdown>
       </Content>
 
       <ActionBar>
         <div className="d-grid mx-2 my-2 gap-2">
-          <Button variant="primary" onClick={onTakePictureClicked}>
-            Take a picture
-          </Button>
-          <Button variant="secondary" onClick={onTryAgainClicked}>
-            Try something else
-          </Button>
           <Button variant="secondary" onClick={onStartOverClicked}>
             Start over
           </Button>
