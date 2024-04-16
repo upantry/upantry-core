@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
-import { Form, redirect, useNavigation, useSubmit } from "react-router-dom";
+import { Form, redirect, useSubmit } from "react-router-dom";
 import { useApi } from "../http-api";
 import { useStore } from "../store";
 import { Camera } from "../camera";
-import { Content, NavBar, Page } from "../layout";
-import Button from "react-bootstrap/Button";
+import { Content, Page } from "../layout";
 
 export async function action(args: any) {
   const formData = await args.request.formData();

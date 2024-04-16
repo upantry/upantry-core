@@ -2,7 +2,7 @@ $primary: rgba(3, 84, 7, 0.45);
 $title: rgba(200, 121, 121, 1);
 
 @import "node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 .btn {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -12,7 +12,7 @@ $title: rgba(200, 121, 121, 1);
 }
 
 #root .btn-primary {
-    @include button-variant($primary, darken($primary, 7.5%));
+  @include button-variant($primary, darken($primary, 7.5%));
 }
 
 html,
@@ -22,14 +22,15 @@ body,
 }
 
 #root {
-  font-family: 'Source Sans 3';
+  font-family: "Source Sans 3";
 }
 
 #root {
   background-color: rgba(245, 243, 233, 0.5);
 }
 
-#root h1, #root h2 {
+#root h1,
+#root h2 {
   margin-top: 12px;
   color: $title;
   font-weight: 900;
