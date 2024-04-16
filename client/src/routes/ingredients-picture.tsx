@@ -13,9 +13,8 @@ export async function action(args: any) {
   store.freeFromInstructions = [];
 
   const api = useApi();
-  const response = await api.getRecipe({
-    picture: store.pantryPicture!,
-    freeFormInstructions: store.freeFromInstructions,
+  const response = await api.transcribeIngredients({
+    image: store.pantryPicture!,
   });
 
   store.getRecipeResponse = response;

@@ -3,6 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ActionBar, Content, Page } from "../layout";
+import Markdown from "react-markdown";
 
 function CarouselSlide() {
   return (
@@ -51,6 +52,21 @@ export function Home() {
         </Carousel>
 
         <h2>Recently enjoyed plates</h2>
+
+      <div onClick={(e) => {
+        e.preventDefault();
+        console.log('heyyy', (e.target as HTMLElement).innerText)
+      }}>
+        <Markdown>
+          {`# This is some markdown
+
+And do
+
+* [one](/hello)
+* two 
+* three`}
+        </Markdown>
+        </div>
       </Content>
 
       <ActionBar>
