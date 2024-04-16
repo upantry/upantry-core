@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { Content, Page } from "../layout";
 import Markdown from "react-markdown";
 import { useApi } from "../http-api";
+import React from "react";
 
 export interface LoaderResult {
   readonly ingredients: string;
@@ -34,6 +35,10 @@ export function PictureAnalysisPage() {
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
+
+            const target = e.target as HTMLAnchorElement;
+            if (!target.href) return;
+
             store.choice = (e.target as HTMLElement).innerText;
             navigate("/recipe");
           }}

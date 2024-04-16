@@ -90,3 +90,7 @@ video {
 #screen-layout > .page > .action-bar {
   flex: 0 0 auto;
 }
+
+#screen-layout > .page > .content a {
+  color: $primary;
+}
