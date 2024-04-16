@@ -1,61 +1,46 @@
 import { redirect, useLoaderData, useNavigate } from "react-router-dom";
-import { GetRecipeResponse } from "../Api";
 import { useStore } from "../store";
-import Button from "react-bootstrap/Button";
-import { ActionBar, Content, Page } from "../layout";
+import { Content, Page } from "../layout";
+import Markdown from "react-markdown";
+import { useApi } from "../http-api";
 
 export interface LoaderResult {
-  readonly getRecipeResponse: GetRecipeResponse;
+  readonly ingredients: string;
 }
 
 export async function loader() {
   const store = useStore();
-  const { getRecipeResponse, pantryPicture } = store;
-  if (!getRecipeResponse || !pantryPicture) {
+
+  const { image } = store;
+  if (!image) {
     return redirect("/");
   }
 
-  return { getRecipeResponse };
+  const api = useApi();
+  const { ingredients } = await api.transcribeIngredients({ image })
+  store.ingredients = ingredients;
+  return { ingredients };
 }
 
 export function PictureAnalysisPage() {
   const navigate = useNavigate();
   const store = useStore();
-
-  const { getRecipeResponse } = useLoaderData() as LoaderResult;
-  const { pictureAnalysis } = getRecipeResponse;
-
-  const onCancelClicked = () => {
-    store.getRecipeResponse = null;
-    store.pantryPicture = null;
-    navigate("/ingredients-picture");
-  };
-
-  const onConfirmClicked = () => {
-    navigate("/recipe");
-  };
+  const { ingredients } = useLoaderData() as LoaderResult;
 
   return (
     <Page>
       <Content>
-        <p>Are those the ingredients?</p>
-        <ul>
-          {pictureAnalysis.items.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
-      </Content>
-
-      <ActionBar>
-        <div className="d-grid mx-2 my-2 gap-2">
-          <Button variant="primary" onClick={onConfirmClicked}>
-            That looks right
-          </Button>
-          <Button variant="secondary" onClick={onCancelClicked}>
-            That's not it
-          </Button>
+        <div onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          store.choice = (e.target as HTMLElement).innerText;
+          navigate('/recipe');
+        }}>
+        <Markdown>
+          {ingredients}
+        </Markdown>
         </div>
-      </ActionBar>
+      </Content>
     </Page>
   );
 }

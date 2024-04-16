@@ -12,13 +12,7 @@ import { Home } from "./routes/home.tsx";
 import {
   RecipePage,
   loader as recipeLoader,
-  action as recipeAction,
 } from "./routes/recipe.tsx";
-import {
-  RefinePage,
-  loader as refineLoader,
-  action as refineAction,
-} from "./routes/refine.tsx";
 import {
   IngredientsPicturePage,
   action as ingredientsPictureAction,
@@ -47,14 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/recipe",
         loader: recipeLoader,
-        action: recipeAction,
         element: <RecipePage />,
-      },
-      {
-        path: "/refine",
-        loader: refineLoader,
-        action: refineAction,
-        element: <RefinePage />,
       },
     ],
   },

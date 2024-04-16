@@ -10,7 +10,10 @@ export class HttpApi implements Api {
   async transcribeIngredients(request: TranscribeIngredientsRequest): Promise<TranscribeIngredientsResponse> {
     const resp = await fetch(this.base + '/transcribeIngredients', {
       method: 'POST',
-      body: JSON.stringify(request)
+      body: JSON.stringify(request),
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
     if (!resp.ok) {
       throw new Error(`Response status ${resp.status}`);
@@ -21,7 +24,10 @@ export class HttpApi implements Api {
   async generateRecipe(request: GenerateRecipeRequest): Promise<GenerateRecipeResponse> {
     const resp = await fetch(this.base + '/generateRecipe', {
       method: 'POST',
-      body: JSON.stringify(request)
+      body: JSON.stringify(request),
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
     if (!resp.ok) {
       throw new Error(`Response status ${resp.status}`);

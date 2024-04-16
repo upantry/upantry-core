@@ -1,12 +1,9 @@
-import { PictureAnalysis, Recipe } from "./Model";
-
 export interface TranscribeIngredientsRequest {
   image: string;
 }
 
 export interface TranscribeIngredientsResponse {
-  pictureAnalysis: PictureAnalysis;
-  recipe: Recipe;
+  ingredients: string;
 }
 
 export interface GenerateRecipeRequest {

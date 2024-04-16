@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { Form, redirect, useSubmit } from "react-router-dom";
-import { useApi } from "../http-api";
 import { useStore } from "../store";
 import { Camera } from "../camera";
 import { Content, Page } from "../layout";
@@ -9,16 +8,7 @@ export async function action(args: any) {
   const formData = await args.request.formData();
 
   const store = useStore();
-  store.pantryPicture = formData.get("picture");
-  store.freeFromInstructions = [];
-
-  const api = useApi();
-  const response = await api.transcribeIngredients({
-    image: store.pantryPicture!,
-  });
-
-  store.getRecipeResponse = response;
-
+  store.image = formData.get("picture");
   return redirect(`/picture-analysis`);
 }
 
