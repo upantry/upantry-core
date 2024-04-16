@@ -1,10 +1,6 @@
 package com.upantry7.upantrycore.http
 
-import com.upantry7.upantrycore.http.model.GenerateRecipeRequest
-import com.upantry7.upantrycore.http.model.GenerateRecipeResponse
-import com.upantry7.upantrycore.http.model.HelloResponse
-import com.upantry7.upantrycore.http.model.TranscribeIngredientsRequest
-import com.upantry7.upantrycore.http.model.TranscribeIngredientsResponse
+import com.upantry7.upantrycore.http.model.*
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -28,6 +24,9 @@ class UpantryController {
     fun generateRecipe(@RequestBody body: GenerateRecipeRequest): GenerateRecipeResponse {
         return GenerateRecipeResponse(sampleRecipe)
     }
+
+    @GetMapping("/globalImpact")
+    fun getGlobalImpact() = GetGlobalImpactResponse(93.75,1.86,1000.0)
 
     companion object {
         val sampleIngredients = """
