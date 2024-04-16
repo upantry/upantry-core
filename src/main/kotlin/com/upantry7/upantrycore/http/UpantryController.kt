@@ -5,6 +5,7 @@ import com.upantry7.upantrycore.http.model.GenerateRecipeResponse
 import com.upantry7.upantrycore.http.model.HelloResponse
 import com.upantry7.upantrycore.http.model.TranscribeIngredientsRequest
 import com.upantry7.upantrycore.http.model.TranscribeIngredientsResponse
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -17,11 +18,13 @@ class UpantryController {
     fun hello() = HelloResponse()
 
     @PostMapping("/transcribeIngredients")
+    @CrossOrigin
     fun transcribeIngredients(@RequestBody body: TranscribeIngredientsRequest): TranscribeIngredientsResponse {
         return TranscribeIngredientsResponse(sampleIngredients)
     }
 
     @PostMapping("/generateRecipe")
+    @CrossOrigin
     fun generateRecipe(@RequestBody body: GenerateRecipeRequest): GenerateRecipeResponse {
         return GenerateRecipeResponse(sampleRecipe)
     }
