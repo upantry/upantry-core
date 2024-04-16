@@ -30,6 +30,20 @@ body,
   background-color: rgba(245, 243, 233, 0.5);
 }
 
+#loading-overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
 #root h1,
 #root h2 {
   margin-top: 12px;
@@ -56,6 +70,7 @@ video {
   flex-direction: column;
   min-height: 100%;
   height: 100%;
+  min-height: 0;
 }
 
 #screen-layout .nav-bar {
@@ -74,22 +89,34 @@ video {
   margin-right: 4px;
 }
 
-#screen-layout * {
+#screen-layout > * {
   flex: 1 0 auto;
 }
 
 #screen-layout > .page {
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  flex: 1;
 }
 
 #screen-layout > .page > .content {
-  flex: 1 0 auto;
+  flex: 1;
   padding: 12px;
+  overflow: auto;
+  min-height: 0;
 }
 
 #screen-layout > .page > .action-bar {
   flex: 0 0 auto;
+}
+
+#screen-layout > .page > .content .btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 #screen-layout > .page > .content a {

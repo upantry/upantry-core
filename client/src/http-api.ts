@@ -43,5 +43,9 @@ export class HttpApi implements Api {
 }
 
 export function useApi(): Api {
-  return new HttpApi(location.port ? "http://localhost:8080" : "http://https://upantry-be-2f2tbvh6qq-ue.a.run.app");
+  return new HttpApi(
+    location.port
+      ? "http://localhost:8080"
+      : "http://https://upantry-be-2f2tbvh6qq-ue.a.run.app",
+  );
 }
