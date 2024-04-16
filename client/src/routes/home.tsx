@@ -72,6 +72,10 @@ export function Home() {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+      
+        <Button variant="primary" onClick={onGetStartedClicked}>
+          Get Started
+        </Button>
 
         <div
           className="counter-container"
@@ -94,9 +98,6 @@ export function Home() {
 
       <ActionBar>
         <div className="d-grid mx-2 my-2" style={{ flex: 0 }}>
-          <Button variant="primary" onClick={onGetStartedClicked}>
-            Get Started
-          </Button>
         </div>
       </ActionBar>
     </Page>

@@ -92,6 +92,14 @@ video {
   flex: 0 0 auto;
 }
 
+#screen-layout > .page > .content button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 #screen-layout > .page > .content a {
   color: $primary;
 }
