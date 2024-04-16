@@ -23,8 +23,13 @@ export function Root() {
         <Outlet />
       </div>
 
-      <div id="loading-overlay" style={{ visibility: navigation.state === 'loading' ? 'visible' : 'hidden' }}>
-        <Hourglass colors={['rgba(0, 128, 128, 1)', 'rgba(0, 128, 128, 1)']} />
+      <div
+        id="loading-overlay"
+        style={{
+          visibility: navigation.state === "loading" ? "visible" : "hidden",
+        }}
+      >
+        <Hourglass colors={["rgba(0, 128, 128, 1)", "rgba(0, 128, 128, 1)"]} />
       </div>
     </>
   );
