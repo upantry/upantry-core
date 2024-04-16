@@ -22,7 +22,6 @@ export function IngredientsPicturePage() {
   return (
     <Page>
       <Content>
-        {/* <h1>Take a picture of your ingredients ({navigation.state})</h1> */}
         <Form method="post" ref={formRef} style={{ height: "100%" }}>
           <Camera
             onPictureTaken={(pic) => {
