@@ -5,6 +5,8 @@ import com.upantry7.upantrycore.http.model.GenerateRecipeResponse
 import com.upantry7.upantrycore.http.model.HelloResponse
 import com.upantry7.upantrycore.http.model.TranscribeIngredientsRequest
 import com.upantry7.upantrycore.http.model.TranscribeIngredientsResponse
+import com.upantry7.upantrycore.vertex.VertexDS
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class UpantryController {
+class UpantryController(
+    @Autowired private val vertexDS: VertexDS
+) {
 
     @GetMapping("/hello")
     fun hello() = HelloResponse()
@@ -20,13 +24,17 @@ class UpantryController {
     @PostMapping("/transcribeIngredients")
     @CrossOrigin
     fun transcribeIngredients(@RequestBody body: TranscribeIngredientsRequest): TranscribeIngredientsResponse {
-        return TranscribeIngredientsResponse(sampleIngredients)
+        if(body.image.isEmpty()) return TranscribeIngredientsResponse(sampleIngredients)
+        val ingredients = vertexDS.getIngredientsFromImageBase64(body.image)
+        return TranscribeIngredientsResponse(ingredients)
     }
 
     @PostMapping("/generateRecipe")
     @CrossOrigin
     fun generateRecipe(@RequestBody body: GenerateRecipeRequest): GenerateRecipeResponse {
-        return GenerateRecipeResponse(sampleRecipe)
+        if(body.ingredients.isEmpty()) return GenerateRecipeResponse(sampleRecipe)
+        val recipe = vertexDS.getRecipe(body.ingredients, body.choice)
+        return GenerateRecipeResponse(recipe)
     }
 
     companion object {

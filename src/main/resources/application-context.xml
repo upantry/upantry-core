@@ -6,4 +6,5 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!--    <bean id="upantryController" class="com.upantry7.upantrycore.http.UpantryController" />-->
+    <bean id="vertexDS" class="com.upantry7.upantrycore.vertex.impl.VertexDSImpl" />
 </beans>
