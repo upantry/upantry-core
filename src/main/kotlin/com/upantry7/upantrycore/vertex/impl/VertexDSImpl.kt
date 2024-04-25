@@ -70,6 +70,6 @@ class VertexDSImpl : VertexDS {
             "data:image/jpeg;base64," to MimeTypeUtils.IMAGE_JPEG,
         )
         private const val INGREDIENT_PROMPT = "The image shows what the person has to cook a meal with, please describe all items in the picture and a number list of meal ideas. The section titles should be in header 1 markdown format\n" +
-                "Modify the output so that the meal ideas indexes are linkable. For example, '1. [Chicken and Shrimp Stir-fry with Bean Sprouts and Noodles](#idea1)'. Don't add anything else to the output."
+                "Modify the output so that the meal ideas indexes are linkable. For example, '1. [Chicken and Shrimp Stir-fry with Bean Sprouts and Noodles](#idea1)'. Do not include this example recipe in the response. Don't add anything else to the output."
     }
 }
