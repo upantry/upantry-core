@@ -1,6 +1,10 @@
 # upantry-core
 
-## Setup
+uPantry lets you optimize your meals by analyzing your ingredients and suggesting delicious recipes.
+
+[Try it live](https://upantry-fe-2f2tbvh6qq-ue.a.run.app/)
+
+## Client Setup
 
 Install dependencies:
 
@@ -15,4 +19,4 @@ npm i
 - Run the dev server: `npm run dev`
 - Open the URL displayed in the terminal
 
-# upantry-be
+## Backend Setup
