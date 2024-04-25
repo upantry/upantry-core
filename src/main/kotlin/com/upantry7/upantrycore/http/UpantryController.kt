@@ -1,10 +1,5 @@
 package com.upantry7.upantrycore.http
-
-import com.upantry7.upantrycore.http.model.GenerateRecipeRequest
-import com.upantry7.upantrycore.http.model.GenerateRecipeResponse
-import com.upantry7.upantrycore.http.model.HelloResponse
-import com.upantry7.upantrycore.http.model.TranscribeIngredientsRequest
-import com.upantry7.upantrycore.http.model.TranscribeIngredientsResponse
+import com.upantry7.upantrycore.http.model.*
 import com.upantry7.upantrycore.vertex.VertexDS
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -36,6 +31,9 @@ class UpantryController(
         val recipe = vertexDS.getRecipe(body.ingredients, body.choice)
         return GenerateRecipeResponse(recipe)
     }
+
+    @GetMapping("/globalImpact")
+    fun getGlobalImpact() = GetGlobalImpactResponse(93.75,1.86,1000.0)
 
     companion object {
         val sampleIngredients = """
