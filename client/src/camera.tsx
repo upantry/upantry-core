@@ -9,15 +9,17 @@ export function Camera(props: { onPictureTaken: (picture: string) => void }) {
     if (!videoElt) return;
 
     let mediaStream: MediaStream;
-    navigator.mediaDevices.getUserMedia({ 
-      video: {
-        facingMode: 'environment',
-      },
-    }).then((stream) => {
-      mediaStream = stream;
-      videoElt.srcObject = stream;
-      videoElt.play();
-    });
+    navigator.mediaDevices
+      .getUserMedia({
+        video: {
+          facingMode: "environment",
+        },
+      })
+      .then((stream) => {
+        mediaStream = stream;
+        videoElt.srcObject = stream;
+        videoElt.play();
+      });
 
     return () => {
       for (const track of mediaStream?.getTracks() || []) {
