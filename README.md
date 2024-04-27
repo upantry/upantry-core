@@ -38,12 +38,14 @@ npm i
 
 ## Backend Setup
 
+```sh
 ./gradlew clean build --no-daemon
+```
 
-- Run the local backend server: 'java -jar /build/lib/upantry-core.jar'
+- Run the local backend server: `java -jar /build/lib/upantry-core.jar`
 - The backend endpoint URL is displayed in the terminal
 
 ## Github Actions (ci/cd)
 
-- deploy_be: "deploys the backend to Cloud run when the main branch is altered"
-- deploy_fe" "deploys the frontend to cloud run if the "client" folder/files are altered"
+- `deploy_be`: "deploys the backend to Cloud run when the main branch is altered"
+- `deploy_fe`: "deploys the frontend to cloud run if the "client" folder/files are altered"
