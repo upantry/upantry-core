@@ -1,5 +1,6 @@
 <p align="center">
-  [![uPantry demo](https://img.youtube.com/vi/7hQKj4Arr1Y/0.jpg)](https://www.youtube.com/watch?v=7hQKj4Arr1Y)
+  <a href="https://www.youtube.com/watch?v=7hQKj4Arr1Y"><img src="https://img.youtube.com/vi/7hQKj4Arr1Y/0.jpg" alt="uPantry demo" /></a>
+  <br />
   *Click to watch the demo*
 </p>
 
