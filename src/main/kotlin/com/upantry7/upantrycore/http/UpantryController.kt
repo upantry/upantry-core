@@ -32,8 +32,12 @@ class UpantryController(
         return GenerateRecipeResponse(recipe)
     }
 
-    @GetMapping("/globalImpact")
-    fun getGlobalImpact() = GetGlobalImpactResponse(93.75,1.86,1000.0)
+    // @todo
+    //"uPantry's design includes a real-time global impact tracker. Currently, this displays placeholder data."
+    //"The full implementation will utilize Cloud SQL to dynamically update savings and CO2 metrics based on user actions."
+
+    // @GetMapping("/globalImpact")
+    // fun getGlobalImpact() = GetGlobalImpactResponse(93.75,1.86,1000.0)
 
     companion object {
         val sampleIngredients = """
