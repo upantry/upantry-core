@@ -1,3 +1,5 @@
+[![uPantry demo](https://img.youtube.com/vi/7hQKj4Arr1Y/0.jpg)](https://www.youtube.com/watch?v=7hQKj4Arr1Y)
+
 # upantry-core
 
 uPantry eliminates the mealtime decision dilemma through a seamless AI-powered experience:
