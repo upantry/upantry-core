@@ -1,4 +1,7 @@
-[![uPantry demo](https://img.youtube.com/vi/7hQKj4Arr1Y/0.jpg)](https://www.youtube.com/watch?v=7hQKj4Arr1Y)
+<p align="center">
+  [![uPantry demo](https://img.youtube.com/vi/7hQKj4Arr1Y/0.jpg)](https://www.youtube.com/watch?v=7hQKj4Arr1Y)
+  *Click to watch the demo*
+</p>
 
 # upantry-core
 
