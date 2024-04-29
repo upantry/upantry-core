@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://www.youtube.com/watch?v=7hQKj4Arr1Y"><img src="https://img.youtube.com/vi/7hQKj4Arr1Y/0.jpg" alt="uPantry demo" /></a>
   <br />
-  *Click to watch the demo*
+  <em>Click to watch the demo</em>
 </p>
 
 # upantry-core
