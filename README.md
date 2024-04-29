@@ -25,7 +25,7 @@ uPantry eliminates the mealtime decision dilemma through a seamless AI-powered e
     * A dynamic global counter demonstrates the collective impact of all uPantry users, fostering a sense of community and positive change.
 
 
-[Try it live](https://upantry-fe-2f2tbvh6qq-ue.a.run.app/)
+[Try it live](https://upantry-fe-2f2tbvh6qq-ue.a.run.app/) (open on a mobile device)
 
 ## Client Setup
 
